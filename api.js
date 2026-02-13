@@ -41,8 +41,13 @@ app.get("/health", (req, res) => {
   res.send("OK");
 });
 
+app.get("/", (req, res) => {
+  res.send("API está funcionando!");
+});
+
+// Endpoint removido para segurança (não expor variaveis de ambiente)
 app.get("/track", (req, res) => {
-  res.send(PROJECTS);
+  res.status(405).send("Method Not Allowed. Use POST.");
 });
 
 app.post("/track", async (req, res) => {
